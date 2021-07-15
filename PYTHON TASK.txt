@@ -1,0 +1,30 @@
+expression = input()
+given_dict_object = input().split(",")
+
+new_object = {}
+for each in given_dict_object:
+    property_name = each.split(":")
+    key = property_name[0][2]
+    list_ = property_name[1].split("'")
+    new_object[key] = list_[1]
+
+
+var_list = []
+result = ""
+try:
+    if expression.index("and") and expression.index("and"):
+        var_list = expression.split("and")
+        for each in var_list:
+            each = each.replace(" ", "")
+            result+=new_object[each] 
+except:
+    pass
+
+try:   
+    if expression.index("or"):
+        var_list = expression.split("or")
+        var_list[0] = var_list[0].replace(" ", "")
+        result+=new_object[var_list[0]]
+except:
+   pass
+print(result)

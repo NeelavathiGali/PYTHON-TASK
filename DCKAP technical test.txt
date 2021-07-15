@@ -1,0 +1,66 @@
+n = int(input())
+
+num_dict = {
+    1:"one", 2:"two", 3:"three", 4:"four", 5:"five", 6:"six", 7:"seven", 8:"eight", 9:"nine"
+}
+
+tens_dict = {
+    1:"ten-", 2:"twenty-", 3:"thirty-", 4:"forty-", 5:"fifty-", 6:"sixty-", 7:"seventy-", 8:"eighty-", 9:"ninty-"
+}
+result =""
+billions = int(n/1000000000);
+if billions>0:
+    k = num_dict[billions]
+    result+= k+" billion "
+    
+n= n%1000000000
+millions = int(n/1000000)
+if millions>0:
+    k = millions
+    if k>100:
+        num= k
+        hundreds = int(num/100)
+        num= num%100
+        tens = int(num/10)
+        one_count = num%10
+        result+= num_dict[hundreds] + " hundred " + tens_dict[tens]+ num_dict[one_count]+" million "
+    elif k>10:
+        num= k
+        tens = int(num/10)
+        one_count = num%10
+        result+= tens_dict[tens] + num_dict[one_count] + " million "
+    else:
+        num = k
+        one_count = num%10
+        result+= num_dict[one_count] + " million "
+n= n%1000000
+thousands =  int(n/1000)
+if thousands>0:
+    if thousands>100:
+        num= thousands
+        hundreds = int(num/100)
+        num= num%100
+        tens = int(num/10)
+        one_count = num%10
+        result+= num_dict[hundreds] + " hundred " + tens_dict[tens]+ num_dict[one_count]+" thousand "
+    elif thousands>10:
+        num= thousands
+        tens = int(num/10)
+        one_count = num%10
+        result+= tens_dict[tens] + num_dict[one_count] + " thousand "
+    else:
+        num = thousands
+        one_count = num%10
+        result+= num_dict[one_count] + " thousand "
+
+n= n%1000
+hundreds = int(n/100)
+if hundreds>0:
+    result+= num_dict[hundreds] + " hundred "
+n= n%100
+tens = int(n/10)
+ones = n%10
+if ones>0 and tens>0:
+    result+= tens_dict[tens] + num_dict[ones] + " dollars"
+
+print(result)
